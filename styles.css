@@ -1,3 +1,7 @@
+/* ************** */
+/* General styles */
+/* ************** */
+
 * {
   padding: 0;
   margin: 0;
@@ -22,6 +26,7 @@ body {
   margin: auto;
   display: flex;
   flex-wrap: wrap;
+  perspective: 1000px;
 }
 
 .card {
@@ -30,6 +35,14 @@ body {
   margin: 5px;
   position: relative;
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  transform: scale(1);
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.card:hover,
+.card:focus {
+  cursor: pointer;
 }
 
 .front img,
@@ -37,13 +50,33 @@ body {
   width: 100%;
   height: 100%;
   padding: 20px;
-  position: absolute;
   border-radius: 5px;
   background: #1c7ccc;
+  position: absolute;
+  /* hide back when flipped */
+  backface-visibility: hidden;
 }
 
 .front,
 .back {
   border-radius: 5px;
   background: #1c7ccc;
+}
+
+/* show front of card when clicked */
+.front img {
+  transform: rotateY(180deg);
+}
+
+/* ******************* */
+/* Card flip animation */
+/* ******************* */
+
+.card:active {
+  transform: scale(0.97);
+  transition: transform 0.2s;
+}
+
+.card.flip {
+  transform: rotateY(180deg);
 }
