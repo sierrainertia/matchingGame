@@ -30,10 +30,31 @@ header {
   margin-top: 50px;
   text-align: center;
 }
-
 h1 {
+  font-size: 50px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 15px;
+  border: none;
+}
+
+button:hover,
+button:focus {
+  background-color: #ffc6ff;
+  cursor: pointer;
+}
+
+h1,
+button {
   font-family: "Grandstander", cursive;
 }
+
+/* *********** */
+/* Game styles */
+/* *********** */
 
 .memoryGame {
   width: 600px;
