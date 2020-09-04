@@ -19,6 +19,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-family: "Montserrat", sans-serif;
 }
 
 /* ************** */
@@ -28,6 +29,10 @@ body {
 header {
   margin-top: 50px;
   text-align: center;
+}
+
+h1 {
+  font-family: "Grandstander", cursive;
 }
 
 .memoryGame {
