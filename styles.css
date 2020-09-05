@@ -37,6 +37,11 @@ h1 {
   font-size: 50px;
 }
 
+p,
+button {
+  font-size: 20px;
+}
+
 button {
   padding: 10px;
   border-radius: 15px;
@@ -81,8 +86,8 @@ footer {
 /* *********** */
 
 .memoryGame {
-  width: 600px;
-  height: 400px;
+  width: 800px;
+  height: 600px;
   margin: auto;
   display: flex;
   flex-wrap: wrap;
