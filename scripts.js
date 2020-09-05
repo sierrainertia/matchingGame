@@ -109,6 +109,8 @@ congrats = () => {
 
 //restart game functionality
 function restartGame() {
+  // set game started back to false
+  hasGameStarted = false;
   // reset board
   resetBoard();
 
