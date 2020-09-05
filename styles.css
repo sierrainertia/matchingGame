@@ -35,7 +35,6 @@ h1 {
 }
 
 button {
-  margin-top: 20px;
   padding: 10px;
   border-radius: 15px;
   border: none;
@@ -52,6 +51,16 @@ button {
   font-family: "Grandstander", cursive;
 }
 
+.gameFunctions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.timer {
+  margin-right: 20px;
+}
 /* *********** */
 /* Game styles */
 /* *********** */

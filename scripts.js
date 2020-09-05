@@ -1,6 +1,7 @@
 const cards = document.querySelectorAll(".card");
 const timer = document.querySelector(".timer");
 
+let hasGameStarted = false;
 let cardFlipped = false;
 let lockBoard = false;
 let firstCard, secondCard;
@@ -14,7 +15,12 @@ function flipcard() {
 
   this.classList.add("flip");
 
-  if (!cardFlipped) {
+  if (hasGameStarted === false) {
+    hasGameStarted = true;
+    startTimer();
+  }
+
+  if (cardFlipped === false) {
     cardFlipped = true;
     firstCard = this;
     return;
@@ -70,8 +76,10 @@ shuffle();
 
 // timer functionality
 function startTimer() {
-  interval = setInterval(function () {
-    timer.innerHTML = minute + "mins " + seconds + "secs";
+  console.log("timer started");
+
+  function tick() {
+    timer.innerHTML = `${minute}mins ${second}secs`;
     second++;
     if (second == 60) {
       minute++;
@@ -82,21 +90,31 @@ function startTimer() {
       hour++;
       minute = 0;
     }
-  }, 1000);
+  }
+  tick();
+  interval = setInterval(tick, 1000);
 }
 
 //restart game functionality
 function restartGame() {
   // reset board
   resetBoard();
+
   // remove class .flip from all cards
   cards.forEach((card) => card.classList.remove("flip"));
+
   // shuffle cards
   setTimeout(() => {
     shuffle();
   }, 500);
+
   //   re-add event listener
   cards.forEach((card) => card.addEventListener("click", flipcard));
+
+  // set timer back to 0
+  clearInterval(interval);
+  (second = 0), (minute = 0);
+  timer.innerHTML = `${minute}mins ${second}secs`;
 }
 
 cards.forEach((card) => card.addEventListener("click", flipcard));
