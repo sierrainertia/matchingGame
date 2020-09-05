@@ -58,13 +58,14 @@ function resetBoard() {
 }
 
 // shuffle card order -> IIFE
-(function shuffle() {
+function shuffle() {
   cards.forEach((card) => {
     let randomCardPosition = Math.floor(Math.random() * 18);
     card.style.order = randomCardPosition;
   });
-})();
+}
 
+shuffle();
 // add game completed alert
 
 // timer functionality
@@ -86,18 +87,16 @@ function startTimer() {
 
 //restart game functionality
 function restartGame() {
-  console.log("game restarted");
   // reset board
   resetBoard();
   // remove class .flip from all cards
   cards.forEach((card) => card.classList.remove("flip"));
   // shuffle cards
   setTimeout(() => {
-    cards.forEach((card) => {
-      let randomCardPosition = Math.floor(Math.random() * 18);
-      card.style.order = randomCardPosition;
-    });
+    shuffle();
   }, 500);
+  //   re-add event listener
+  cards.forEach((card) => card.addEventListener("click", flipcard));
 }
 
 cards.forEach((card) => card.addEventListener("click", flipcard));
