@@ -11,15 +11,18 @@
 .wrapper {
   width: 1000px;
   margin: 0 auto;
-  max-width: 90%;
+  max-width: 100%;
 }
 
 body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
   font-family: "Montserrat", sans-serif;
+}
+
+main {
+  flex: 1;
 }
 
 /* ************** */
@@ -27,7 +30,7 @@ body {
 /* ************** */
 
 header {
-  margin-top: 50px;
+  margin-top: 30px;
   text-align: center;
 }
 h1 {
@@ -203,4 +206,20 @@ footer {
 
 .card.flip {
   transform: rotateY(180deg);
+}
+
+/* ************* */
+/* Media Queries */
+/* ************* */
+@media (max-width: 775px) {
+  .card {
+    height: 30vw;
+    width: 28vw;
+  }
+
+  .memoryGame {
+    justify-content: center;
+    width: 100%;
+    height: unset;
+  }
 }
