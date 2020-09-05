@@ -1,8 +1,12 @@
 const cards = document.querySelectorAll(".card");
+const timer = document.querySelector(".timer");
 
 let cardFlipped = false;
 let lockBoard = false;
 let firstCard, secondCard;
+let second = 0,
+  minute = 0;
+let interval;
 
 function flipcard() {
   if (lockBoard) return;
@@ -60,5 +64,40 @@ function resetBoard() {
     card.style.order = randomCardPosition;
   });
 })();
+
+// add game completed alert
+
+// timer functionality
+function startTimer() {
+  interval = setInterval(function () {
+    timer.innerHTML = minute + "mins " + seconds + "secs";
+    second++;
+    if (second == 60) {
+      minute++;
+      second = 0;
+    }
+
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+}
+
+//restart game functionality
+function restartGame() {
+  console.log("game restarted");
+  // reset board
+  resetBoard();
+  // remove class .flip from all cards
+  cards.forEach((card) => card.classList.remove("flip"));
+  // shuffle cards
+  setTimeout(() => {
+    cards.forEach((card) => {
+      let randomCardPosition = Math.floor(Math.random() * 18);
+      card.style.order = randomCardPosition;
+    });
+  }, 500);
+}
 
 cards.forEach((card) => card.addEventListener("click", flipcard));
