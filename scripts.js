@@ -35,6 +35,14 @@ function checkForMatch() {
   // if first card matches second card call disable card function, else call unflipcards function
   let isMatch = firstCard.dataset.cardType === secondCard.dataset.cardType;
   isMatch ? disableCards() : unFlipCards();
+
+  // check for win
+  setTimeout(function () {
+    if (document.querySelectorAll(".card.flip").length === 18) {
+      congrats();
+      clearInterval(interval);
+    }
+  }, 600);
   return;
 }
 
@@ -72,7 +80,6 @@ function shuffle() {
 }
 
 shuffle();
-// add game completed alert
 
 // timer functionality
 function startTimer() {
@@ -94,6 +101,11 @@ function startTimer() {
   tick();
   interval = setInterval(tick, 1000);
 }
+
+// add game completed alert
+congrats = () => {
+  window.alert(`Congrats! You finished in ${timer.innerHTML} 🎉🎉`);
+};
 
 //restart game functionality
 function restartGame() {
