@@ -86,7 +86,7 @@ function startTimer() {
   console.log("timer started");
 
   function tick() {
-    timer.innerHTML = `${minute}mins ${second}secs`;
+    timer.innerHTML = `${minute} minutes and ${second} seconds`;
     second++;
     if (second == 60) {
       minute++;
@@ -129,7 +129,7 @@ function restartGame() {
   // set timer back to 0
   clearInterval(interval);
   (second = 0), (minute = 0);
-  timer.innerHTML = `${minute}mins ${second}secs`;
+  timer.innerHTML = `${minute} Minutes and ${second} Seconds`;
 }
 
 cards.forEach((card) => card.addEventListener("click", flipcard));
