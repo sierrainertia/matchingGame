@@ -133,3 +133,10 @@ function restartGame() {
 }
 
 cards.forEach((card) => card.addEventListener("click", flipcard));
+
+const cardflip = document.querySelectorAll(".card");
+
+for (let i = 0; i < cardflip.length; i++) {
+  const currentCard = cardflip[i];
+  currentCard.classList.add("flip");
+}
